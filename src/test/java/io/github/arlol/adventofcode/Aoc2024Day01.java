@@ -29,12 +29,10 @@ public class Aoc2024Day01 {
 	private long dayOnePuzzleOne(String input) {
 		List<Integer> left = new ArrayList<>();
 		List<Integer> right = new ArrayList<>();
-		String[] lines = input.split("\r?\n");
-		for (var line : lines) {
-			String[] split = line.split("\s+");
+		input.lines().map(line -> line.split("\s+")).forEach(split -> {
 			left.add(Integer.valueOf(split[0]));
 			right.add(Integer.valueOf(split[1]));
-		}
+		});
 		Collections.sort(left);
 		Collections.sort(right);
 		long sum = 0;
@@ -64,12 +62,10 @@ public class Aoc2024Day01 {
 	private long dayOnePuzzleTwo(String input) {
 		List<Integer> left = new ArrayList<>();
 		List<Integer> right = new ArrayList<>();
-		String[] lines = input.split("\r?\n");
-		for (var line : lines) {
-			String[] split = line.split("\s+");
+		input.lines().map(line -> line.split("\s+")).forEach(split -> {
 			left.add(Integer.valueOf(split[0]));
 			right.add(Integer.valueOf(split[1]));
-		}
+		});
 		long sum = 0;
 		for (int l : left) {
 			sum += l * right.stream().filter(r -> r.equals(l)).count();
