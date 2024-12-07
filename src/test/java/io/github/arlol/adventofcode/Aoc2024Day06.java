@@ -119,7 +119,7 @@ public class Aoc2024Day06 {
 				visitedDirections.add(direction);
 
 				var potentialPoint = nextPoint(nextPoint, direction);
-				if (obstructions.contains(potentialPoint)) {
+				while (obstructions.contains(potentialPoint)) {
 					direction = nextDirection(direction);
 					potentialPoint = nextPoint(nextPoint, direction);
 				}
