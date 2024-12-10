@@ -43,7 +43,7 @@ public class Aoc2024Day06 {
 
 	}
 
-	public static class GuardOne {
+	private static class GuardOne {
 
 		String input;
 		int width;
@@ -159,7 +159,7 @@ public class Aoc2024Day06 {
 		System.out.println("Day Six Puzzle Two: " + loopingPoints.size());
 	}
 
-	public static class GuardTwo extends GuardOne {
+	private static class GuardTwo extends GuardOne {
 
 		public GuardTwo(String input) {
 			super(input);

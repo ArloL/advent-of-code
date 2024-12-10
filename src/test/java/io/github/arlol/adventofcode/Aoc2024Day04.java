@@ -59,7 +59,7 @@ public class Aoc2024Day04 {
 		return wordSearch.count();
 	}
 
-	public static class WordSearchOne {
+	private static class WordSearchOne {
 
 		int width;
 		int height;
@@ -199,7 +199,7 @@ public class Aoc2024Day04 {
 		return wordSearch.count();
 	}
 
-	public static class WordSearchTwo {
+	private static class WordSearchTwo {
 
 		int width;
 		int height;

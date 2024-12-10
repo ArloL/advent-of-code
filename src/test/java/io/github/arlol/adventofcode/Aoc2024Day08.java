@@ -58,23 +58,21 @@ public class Aoc2024Day08 {
 		return gridOne.calculate();
 	}
 
-	public static record Point(
+	private static record Point(
 			int x,
 			int y
 	) {
 
 	}
 
-	public static class GridOne {
+	private static class GridOne {
 
-		String input;
 		int width;
 		int height;
 		List<String> lines;
 		Map<String, List<Point>> antennasForFrequencies = new HashMap<>();
 
 		public GridOne(String input) {
-			this.input = input;
 			this.lines = input.lines().toList();
 			this.width = lines.getFirst().length();
 			this.height = lines.size();
@@ -156,16 +154,14 @@ public class Aoc2024Day08 {
 		return grid.calculate();
 	}
 
-	public static class GridTwo {
+	private static class GridTwo {
 
-		String input;
 		int width;
 		int height;
 		List<String> lines;
 		Map<String, List<Point>> antennasForFrequencies = new HashMap<>();
 
 		public GridTwo(String input) {
-			this.input = input;
 			this.lines = input.lines().toList();
 			this.width = lines.getFirst().length();
 			this.height = lines.size();
