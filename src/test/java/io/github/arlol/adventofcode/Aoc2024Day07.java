@@ -19,10 +19,10 @@ public class Aoc2024Day07 {
 
 	@Test
 	void daySevenPuzzleOne() throws Exception {
-		var dayFourPuzzleOne = daySevenPuzzleOne(
+		var actual = daySevenPuzzleOne(
 				ClassPathFiles.readString("aoc2024day07-input.txt")
 		);
-		System.out.println("Day Seven Puzzle One: " + dayFourPuzzleOne);
+		System.out.println("Day Seven Puzzle One: " + actual);
 	}
 
 	private long daySevenPuzzleOne(String input) {
@@ -62,10 +62,10 @@ public class Aoc2024Day07 {
 
 	@Test
 	void daySevenPuzzleTwo() throws Exception {
-		var dayFourPuzzleOne = daySevenPuzzleTwo(
+		var actual = daySevenPuzzleTwo(
 				ClassPathFiles.readString("aoc2024day07-input.txt")
 		);
-		System.out.println("Day Seven Puzzle Two: " + dayFourPuzzleOne);
+		System.out.println("Day Seven Puzzle Two: " + actual);
 	}
 
 	private long daySevenPuzzleTwo(String input) {

@@ -47,10 +47,10 @@ public class Aoc2024Day04 {
 
 	@Test
 	void dayFourPuzzleOne() throws Exception {
-		int dayFourPuzzleOne = dayFourPuzzleOne(
+		int actual = dayFourPuzzleOne(
 				ClassPathFiles.readString("aoc2024day04-input.txt")
 		);
-		System.out.println("Day Four Puzzle One: " + dayFourPuzzleOne);
+		System.out.println("Day Four Puzzle One: " + actual);
 	}
 
 	private int dayFourPuzzleOne(String input) {
