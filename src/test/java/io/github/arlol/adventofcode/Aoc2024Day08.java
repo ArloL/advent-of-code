@@ -89,7 +89,7 @@ public class Aoc2024Day08 {
 						antennasForFrequencies
 								.computeIfAbsent(
 										frequency,
-										(k) -> new ArrayList<>()
+										(_) -> new ArrayList<>()
 								)
 								.add(new Point(x, y));
 					}
@@ -178,7 +178,7 @@ public class Aoc2024Day08 {
 						antennasForFrequencies
 								.computeIfAbsent(
 										frequency,
-										(k) -> new ArrayList<>()
+										(_) -> new ArrayList<>()
 								)
 								.add(new Point(x, y));
 					}

@@ -78,7 +78,7 @@ public class Aoc2024Day09 {
 	}
 
 	private List<Long> repeat(long x, long count) {
-		return LongStream.range(0, count).mapToObj(i -> x).toList();
+		return LongStream.range(0, count).mapToObj(_ -> x).toList();
 	}
 
 	private <E> int indexOf(List<E> list, E entry, int fromIndex) {

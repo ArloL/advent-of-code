@@ -111,7 +111,7 @@ public class Aoc2024Day06 {
 					&& nextPoint.y() > -1 && nextPoint.y() < height) {
 				var visitedDirections = visited.computeIfAbsent(
 						nextPoint,
-						(k) -> new HashSet<Direction>()
+						(_) -> new HashSet<Direction>()
 				);
 				if (visitedDirections.contains(direction)) {
 					return -1;
