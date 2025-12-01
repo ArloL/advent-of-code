@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.LongStream;
 
+import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.Test;
 
 public class Aoc2024Day09 {
@@ -81,9 +82,9 @@ public class Aoc2024Day09 {
 		return LongStream.range(0, count).mapToObj(_ -> x).toList();
 	}
 
-	private <E> int indexOf(List<E> list, E entry, int fromIndex) {
+	private <E> int indexOf(List<E> list, @NonNull E entry, int fromIndex) {
 		for (int i = fromIndex; i < list.size(); i++) {
-			if (list.get(i).equals(entry)) {
+			if (entry.equals(list.get(i))) {
 				return i;
 			}
 		}
