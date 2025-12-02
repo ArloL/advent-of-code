@@ -22,7 +22,6 @@ public class Aoc2025Day02 {
 		return Stream.of(
 				Arguments.of(33, "11-22"),
 				Arguments.of(11, "1-19"),
-
 				Arguments.of(99, "95-115"),
 				Arguments.of(1010, "998-1012"),
 				Arguments.of(1188511885, "1188511880-1188511890"),
