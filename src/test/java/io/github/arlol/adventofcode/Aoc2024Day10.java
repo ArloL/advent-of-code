@@ -139,7 +139,7 @@ public class Aoc2024Day10 {
 			if (nextHeight == 9) {
 				return 1;
 			}
-			var result = 0;
+			var result = 0L;
 			result += findWaysToTop(x - 1, y, nextHeight + 1);
 			result += findWaysToTop(x + 1, y, nextHeight + 1);
 			result += findWaysToTop(x, y - 1, nextHeight + 1);
