@@ -120,7 +120,7 @@ public class Aoc2025Day03 {
 		var partOfListToConsider = list.subList(start, list.size() - remaining);
 		long greatestLongInPartOfList = partOfListToConsider.stream()
 				.reduce(Long::max)
-				.orElseThrow();
+				.get();
 		int indexOfMax = partOfListToConsider.indexOf(greatestLongInPartOfList);
 		var greatestLongInRestOfList = findGreatestLongWithNumberOfDecimals(
 				list,
