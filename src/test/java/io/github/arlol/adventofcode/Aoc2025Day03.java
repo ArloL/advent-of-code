@@ -90,7 +90,7 @@ public class Aoc2025Day03 {
 		var actual = puzzle2(
 				ClassPathFiles.readString("aoc2025day03-input.txt")
 		);
-		System.out.println("Day 2 Puzzle 2: " + actual);
+		System.out.println("Day 3 Puzzle 2: " + actual);
 		assertThat(actual).isEqualTo(169709990062889L);
 	}
 
