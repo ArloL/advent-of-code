@@ -57,7 +57,7 @@ public class Aoc2025DayXXX {
 	@Test
 	void puzzle2Example() throws Exception {
 		var actual = puzzle2(
-				ClassPathFiles.readString("aoc2025day0XXX-example.txt")
+				ClassPathFiles.readString("aoc2025dayXXX-example.txt")
 		);
 		assertThat(actual).isEqualTo(0L);
 	}
