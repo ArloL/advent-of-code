@@ -46,21 +46,17 @@ public class Aoc2025Day07 {
 	) {
 
 		PuzzleOne(String input) {
-			this(
-					input.lines()
-							.map(
-									line -> line.chars()
-											.mapToObj(
-													i -> Character
-															.toString((char) i)
-											)
-											.collect(Collectors.toList())
-							)
-							.collect(Collectors.toList())
-			);
+			var rows = input.lines()
+					.map(
+							line -> line.codePoints()
+									.mapToObj(Character::toString)
+									.collect(Collectors.toList())
+					)
+					.collect(Collectors.toList());
+			this(rows);
 		}
 
-		long goThrough() {
+		long startBeam() {
 			var splitCount = 0L;
 			for (int i = 1; i < rows.size(); i++) {
 				var previousRow = rows.get(i - 1);
@@ -93,6 +89,28 @@ public class Aoc2025Day07 {
 			return splitCount;
 		}
 
+		long countTimelines() {
+			int start = rows.get(1).indexOf("|");
+			return blarg(2, start);
+		}
+
+		private long blarg(int i, int start) {
+			if (i >= rows.size()) {
+				return 1;
+			}
+			var row = rows.get(i);
+			if (start < 0 || start >= row.size()) {
+				return 0;
+			}
+			var cell = row.get(start);
+			if ("|".equals(cell)) {
+				return blarg(i + 1, start);
+			} else if ("X".equals(cell)) {
+				return blarg(i + 1, start - 1) + blarg(i + 1, start + 1);
+			}
+			return 0;
+		}
+
 		void print() {
 			for (var row : rows) {
 				for (var cell : row) {
@@ -106,7 +124,7 @@ public class Aoc2025Day07 {
 
 	private long puzzle1(String input) {
 		var puzzleOne = new PuzzleOne(input);
-		long goThrough = puzzleOne.goThrough();
+		long goThrough = puzzleOne.startBeam();
 		puzzleOne.print();
 		return goThrough;
 	}
@@ -127,7 +145,7 @@ public class Aoc2025Day07 {
 		var actual = puzzle2(
 				ClassPathFiles.readString("aoc2025day07-example.txt")
 		);
-		assertThat(actual).isEqualTo(0L);
+		assertThat(actual).isEqualTo(40L);
 	}
 
 	@Test
@@ -140,7 +158,10 @@ public class Aoc2025Day07 {
 	}
 
 	private long puzzle2(String input) {
-		return 0L;
+		var puzzleOne = new PuzzleOne(input);
+		puzzleOne.startBeam();
+		puzzleOne.print();
+		return puzzleOne.countTimelines();
 	}
 
 }
