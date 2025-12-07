@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.LongBinaryOperator;
 import java.util.stream.Stream;
 
@@ -87,7 +88,7 @@ public class Aoc2025Day06 {
 		var actual = puzzle2(
 				ClassPathFiles.readString("aoc2025day06-example.txt")
 		);
-		assertThat(actual).isEqualTo(0L);
+		assertThat(actual).isEqualTo(3263827L);
 	}
 
 	@Test
@@ -96,11 +97,45 @@ public class Aoc2025Day06 {
 				ClassPathFiles.readString("aoc2025day06-input.txt")
 		);
 		System.out.println("Day 06 Puzzle 2: " + actual);
-		assertThat(actual).isEqualTo(0L);
+		assertThat(actual).isEqualTo(8342588849093L);
 	}
 
 	private long puzzle2(String input) {
-		return 0L;
+		var sum = 0L;
+		var lines = input.lines().toList();
+		int height = lines.size();
+		int width = lines.getFirst().length();
+		List<Long> numbers = new ArrayList<>();
+		for (int iw = width - 1; iw >= 0; iw--) {
+			var charactersSoFar = "";
+			for (int ih = 0; ih < height; ih++) {
+				var index = ih * width + iw + ih;
+				var character = input.substring(index, index + 1);
+				if ("".equals(character) || " ".equals(character)
+						|| "+".equals(character) || "*".equals(character)) {
+					if (!charactersSoFar.isBlank()) {
+						numbers.add(Long.parseLong(charactersSoFar));
+						charactersSoFar = "";
+					}
+				} else {
+					charactersSoFar += character;
+				}
+				if ("+".equals(character) || "*".equals(character)) {
+					LongBinaryOperator operator = switch (character) {
+					case "+" -> (l, r) -> l + r;
+					case "*" -> (l, r) -> l * r;
+					default -> null;
+					};
+					sum += numbers.stream()
+							.mapToLong(l -> l)
+							.reduce(operator)
+							.orElse(0);
+					numbers = new ArrayList<>();
+				}
+			}
+		}
+
+		return sum;
 	}
 
 }
