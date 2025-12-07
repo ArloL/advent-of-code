@@ -2,7 +2,9 @@ package io.github.arlol.adventofcode;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -42,7 +44,10 @@ public class Aoc2025Day07 {
 	}
 
 	private record PuzzleOne(
-			List<List<String>> rows
+			List<List<String>> rows,
+			int start,
+			int width,
+			Map<String, Long> cache
 	) {
 
 		PuzzleOne(String input) {
@@ -53,7 +58,8 @@ public class Aoc2025Day07 {
 									.collect(Collectors.toList())
 					)
 					.collect(Collectors.toList());
-			this(rows);
+			int start = rows.get(0).indexOf("S");
+			this(rows, start, rows.get(0).size(), new HashMap<>());
 		}
 
 		long startBeam() {
@@ -90,25 +96,34 @@ public class Aoc2025Day07 {
 		}
 
 		long countTimelines() {
-			int start = rows.get(1).indexOf("|");
-			return blarg(2, start);
+			startBeam();
+			return countTimelines(2, start);
 		}
 
-		private long blarg(int i, int start) {
-			if (i >= rows.size()) {
+		private long countTimelines(int depth, int index) {
+			String key = "" + depth + index;
+			Long cached = cache.get(key);
+			if (cached != null) {
+				return cached;
+			}
+			if (depth >= rows.size()) {
+				cache.put(key, 1L);
 				return 1;
 			}
-			var row = rows.get(i);
-			if (start < 0 || start >= row.size()) {
+			if (index < 0 || index >= width) {
+				cache.put(key, 0L);
 				return 0;
 			}
-			var cell = row.get(start);
-			if ("|".equals(cell)) {
-				return blarg(i + 1, start);
-			} else if ("X".equals(cell)) {
-				return blarg(i + 1, start - 1) + blarg(i + 1, start + 1);
+			if ("|".equals(rows.get(depth).get(index))) {
+				long numberOfTimelines = countTimelines(depth + 2, index);
+				cache.put(key, numberOfTimelines);
+				return numberOfTimelines;
+			} else {
+				long numberOfTimelines = countTimelines(depth + 2, index - 1)
+						+ countTimelines(depth + 2, index + 1);
+				cache.put(key, numberOfTimelines);
+				return numberOfTimelines;
 			}
-			return 0;
 		}
 
 		void print() {
@@ -137,7 +152,23 @@ public class Aoc2025Day07 {
 	}
 
 	private static Stream<Arguments> provideArgumentsForPuzzle2() {
-		return Stream.of();
+		return Stream.of(Arguments.of(4, """
+				.......S.......
+				...............
+				.......^.......
+				...............
+				......^.^......
+				...............
+				"""), Arguments.of(8, """
+				.......S.......
+				...............
+				.......^.......
+				...............
+				......^.^......
+				...............
+				.....^.^.^.....
+				...............
+				"""));
 	}
 
 	@Test
@@ -159,9 +190,9 @@ public class Aoc2025Day07 {
 
 	private long puzzle2(String input) {
 		var puzzleOne = new PuzzleOne(input);
-		puzzleOne.startBeam();
+		long countTimelines = puzzleOne.countTimelines();
 		puzzleOne.print();
-		return puzzleOne.countTimelines();
+		return countTimelines;
 	}
 
 }
