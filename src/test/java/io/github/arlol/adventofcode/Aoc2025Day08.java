@@ -140,7 +140,7 @@ public class Aoc2025Day08 {
 		var actual = puzzle2(
 				ClassPathFiles.readString("aoc2025day08-example.txt")
 		);
-		assertThat(actual).isEqualTo(0L);
+		assertThat(actual).isEqualTo(25272L);
 	}
 
 	@Test
@@ -149,11 +149,34 @@ public class Aoc2025Day08 {
 				ClassPathFiles.readString("aoc2025day08-input.txt")
 		);
 		System.out.println("Day 08 Puzzle 2: " + actual);
-		assertThat(actual).isEqualTo(0L);
+		assertThat(actual).isEqualTo(2245203960L);
 	}
 
 	private long puzzle2(String input) {
-		return 0L;
+		var points = input.lines().map(Point::new).toList();
+		var pointsSortedByDistance = distanceMap(points).entrySet()
+				.stream()
+				.sorted(Comparator.comparingDouble(Entry::getValue))
+				.map(Entry::getKey)
+				.toList();
+		var pointToJunctionBox = points.stream()
+				.collect(toMap(point -> point, Set::of));
+		for (var entry : pointsSortedByDistance) {
+			var newJunctionBox = Stream
+					.of(
+							pointToJunctionBox.get(entry.getKey()),
+							pointToJunctionBox.get(entry.getValue())
+					)
+					.flatMap(Set::stream)
+					.collect(Collectors.toSet());
+			if (newJunctionBox.size() == points.size()) {
+				return (long) entry.getKey().x() * entry.getValue().x();
+			}
+			for (var point : newJunctionBox) {
+				pointToJunctionBox.put(point, newJunctionBox);
+			}
+		}
+		throw new IllegalStateException();
 	}
 
 }
