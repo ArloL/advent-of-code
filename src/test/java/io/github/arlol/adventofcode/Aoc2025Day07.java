@@ -185,7 +185,7 @@ public class Aoc2025Day07 {
 				ClassPathFiles.readString("aoc2025day07-input.txt")
 		);
 		System.out.println("Day 07 Puzzle 2: " + actual);
-		assertThat(actual).isEqualTo(0L);
+		assertThat(actual).isEqualTo(62943905501815L);
 	}
 
 	private long puzzle2(String input) {
