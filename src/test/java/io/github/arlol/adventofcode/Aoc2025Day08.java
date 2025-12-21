@@ -63,8 +63,8 @@ public class Aoc2025Day08 {
 			var entry = pointsSortedByDistance.get(i);
 			var newJunctionBox = Stream
 					.of(
-							pointToJunctionBox.get(entry.getKey()),
-							pointToJunctionBox.get(entry.getValue())
+							pointToJunctionBox.get(entry.first()),
+							pointToJunctionBox.get(entry.second())
 					)
 					.flatMap(Set::stream)
 					.collect(Collectors.toSet());
@@ -82,15 +82,15 @@ public class Aoc2025Day08 {
 				* sortedCircuits.get(sortedCircuits.size() - 3).size();
 	}
 
-	private Map<Entry<Point, Point>, Double> distanceMap(List<Point> points) {
-		Map<Entry<Point, Point>, Double> distanceMap = new HashMap<>();
+	private Map<Pair<Point>, Double> distanceMap(List<Point> points) {
+		Map<Pair<Point>, Double> distanceMap = new HashMap<>();
 		for (var point : points) {
 			for (var other : points) {
 				if (point.equals(other)) {
 					continue;
 				}
-				var key1 = Map.entry(point, other);
-				var key2 = Map.entry(other, point);
+				var key1 = new Pair<>(point, other);
+				var key2 = new Pair<>(other, point);
 				if (!distanceMap.containsKey(key1)
 						&& !distanceMap.containsKey(key2)) {
 					distanceMap.put(key1, point.distance(other));
@@ -100,7 +100,13 @@ public class Aoc2025Day08 {
 		return distanceMap;
 	}
 
-	private static record Point(
+	private record Pair<T>(
+			T first,
+			T second
+	) {
+	}
+
+	private record Point(
 			int x,
 			int y,
 			int z
@@ -164,13 +170,13 @@ public class Aoc2025Day08 {
 		for (var entry : pointsSortedByDistance) {
 			var newJunctionBox = Stream
 					.of(
-							pointToJunctionBox.get(entry.getKey()),
-							pointToJunctionBox.get(entry.getValue())
+							pointToJunctionBox.get(entry.first()),
+							pointToJunctionBox.get(entry.second())
 					)
 					.flatMap(Set::stream)
 					.collect(Collectors.toSet());
 			if (newJunctionBox.size() == points.size()) {
-				return (long) entry.getKey().x() * entry.getValue().x();
+				return (long) entry.first().x() * entry.second().x();
 			}
 			for (var point : newJunctionBox) {
 				pointToJunctionBox.put(point, newJunctionBox);
