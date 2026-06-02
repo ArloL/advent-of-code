@@ -1,6 +1,5 @@
 package io.github.arlol.adventofcode;
 
-import static java.util.Collections.emptySet;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.HashSet;
@@ -66,10 +65,10 @@ public class Aoc2024Day10 {
 
 		Set<String> findWayToTop(int x, int y, int nextHeight) {
 			if (x < 0 || y < 0 || x >= width || y >= height) {
-				return emptySet();
+				return Set.of();
 			}
 			if (grid.get(y).get(x) != nextHeight) {
-				return emptySet();
+				return Set.of();
 			}
 			if (nextHeight == 9) {
 				return Set.of(x + "x" + y);
