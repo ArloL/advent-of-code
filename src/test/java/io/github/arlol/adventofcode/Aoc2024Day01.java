@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -33,8 +34,8 @@ public class Aoc2024Day01 {
 			left.add(Integer.valueOf(split[0]));
 			right.add(Integer.valueOf(split[1]));
 		});
-		Collections.sort(left);
-		Collections.sort(right);
+		left.sort(Comparator.naturalOrder());
+		right.sort(Comparator.naturalOrder());
 		long sum = 0;
 		for (int i = 0; i < left.size(); i++) {
 			int abs = Math.abs(left.get(i) - right.get(i));
