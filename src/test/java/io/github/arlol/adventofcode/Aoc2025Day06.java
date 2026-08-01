@@ -67,7 +67,7 @@ public class Aoc2025Day06 {
 			sum += longlists.stream()
 					.mapToLong(list -> list.get(index))
 					.reduce(reducer)
-					.getAsLong();
+					.orElseThrow();
 		}
 		return sum;
 	}
