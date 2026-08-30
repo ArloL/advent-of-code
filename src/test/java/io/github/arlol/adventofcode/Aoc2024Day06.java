@@ -24,6 +24,7 @@ public class Aoc2024Day06 {
 		int daySixPuzzleOne = daySixPuzzleOne(
 				ClassPathFiles.readString("aoc2024day06-input.txt")
 		);
+		assertEquals(5312, daySixPuzzleOne);
 		System.out.println("Day Six Puzzle One: " + daySixPuzzleOne);
 	}
 

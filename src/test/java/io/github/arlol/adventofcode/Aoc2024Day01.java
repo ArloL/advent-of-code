@@ -24,6 +24,7 @@ public class Aoc2024Day01 {
 		long dayOnePuzzleOne = dayOnePuzzleOne(
 				ClassPathFiles.readString("aoc2024day01-input.txt")
 		);
+		assertEquals(1722302, dayOnePuzzleOne);
 		System.out.println("Day One Puzzle One: " + dayOnePuzzleOne);
 	}
 
@@ -57,6 +58,7 @@ public class Aoc2024Day01 {
 		long dayOnePuzzleTwo = dayOnePuzzleTwo(
 				ClassPathFiles.readString("aoc2024day01-input.txt")
 		);
+		assertEquals(20373490, dayOnePuzzleTwo);
 		System.out.println("Day One Puzzle Two: " + dayOnePuzzleTwo);
 	}
 

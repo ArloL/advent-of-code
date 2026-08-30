@@ -50,6 +50,7 @@ public class Aoc2024Day04 {
 		int actual = dayFourPuzzleOne(
 				ClassPathFiles.readString("aoc2024day04-input.txt")
 		);
+		assertEquals(2534, actual);
 		System.out.println("Day Four Puzzle One: " + actual);
 	}
 
@@ -190,6 +191,7 @@ public class Aoc2024Day04 {
 		int dayFourPuzzleTwo = dayFourPuzzleTwo(
 				ClassPathFiles.readString("aoc2024day04-input.txt")
 		);
+		assertEquals(1866, dayFourPuzzleTwo);
 		System.out.println("Day Four Puzzle Two: " + dayFourPuzzleTwo);
 	}
 

@@ -139,6 +139,7 @@ public class Aoc2025Day01 {
 				ClassPathFiles.readString("aoc2025day01-input.txt")
 		);
 
+		assertThat(actual).isEqualTo(6166);
 		System.out.println("Day 1 Puzzle 2: " + actual);
 	}
 
