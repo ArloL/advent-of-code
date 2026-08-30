@@ -25,6 +25,7 @@ public class Aoc2024Day09 {
 		var actual = dayNinePuzzleOne(
 				ClassPathFiles.readString("aoc2024day09-input.txt")
 		);
+		assertEquals(6382875730645L, actual);
 		System.out.println("Day Nine Puzzle One: " + actual);
 	}
 
@@ -36,7 +37,7 @@ public class Aoc2024Day09 {
 
 	private List<Long> diskMapToDisk(String diskMap) {
 		var disk = new ArrayList<Long>();
-		char[] diskMapCharArray = diskMap.toCharArray();
+		char[] diskMapCharArray = diskMap.strip().toCharArray();
 		for (int i = 0, index = 0; i < diskMapCharArray.length; i++) {
 			char c = diskMapCharArray[i];
 			long count = Long.parseLong(String.valueOf(c));
@@ -134,6 +135,7 @@ public class Aoc2024Day09 {
 		var actual = dayNinePuzzleTwo(
 				ClassPathFiles.readString("aoc2024day09-input.txt")
 		);
+		assertEquals(6420913943576L, actual);
 		System.out.println("Day Nine Puzzle Two: " + actual);
 	}
 

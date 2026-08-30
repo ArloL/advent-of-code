@@ -40,11 +40,12 @@ public class Aoc2024Day11 {
 				ClassPathFiles.readString("aoc2024day11-input.txt"),
 				25
 		);
+		assertThat(actual).isEqualTo(185205);
 		System.out.println("Day Eleven Puzzle One: " + actual);
 	}
 
 	private long dayElevenPuzzleOne(String input, int blinkCount) {
-		var stones = Stream.of(input.split("\s+"))
+		var stones = Stream.of(input.strip().split("\s+"))
 				.map(Long::parseLong)
 				.toList();
 		long count = 0;
@@ -89,6 +90,7 @@ public class Aoc2024Day11 {
 				ClassPathFiles.readString("aoc2024day11-input.txt"),
 				75
 		);
+		assertThat(actual).isEqualTo(221280540398419L);
 		System.out.println("Day Eleven Puzzle Two: " + actual);
 	}
 

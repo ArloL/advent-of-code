@@ -50,6 +50,7 @@ public class Aoc2024Day08 {
 		var actual = dayEightPuzzleOne(
 				ClassPathFiles.readString("aoc2024day08-input.txt")
 		);
+		assertEquals(280, actual);
 		System.out.println("Day Eight Puzzle One: " + actual);
 	}
 
@@ -146,6 +147,7 @@ public class Aoc2024Day08 {
 		var actual = dayEightPuzzleTwo(
 				ClassPathFiles.readString("aoc2024day08-input.txt")
 		);
+		assertEquals(958, actual);
 		System.out.println("Day Eight Puzzle Two: " + actual);
 	}
 

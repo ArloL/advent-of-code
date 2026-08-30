@@ -22,6 +22,7 @@ public class Aoc2024Day07 {
 		var actual = daySevenPuzzleOne(
 				ClassPathFiles.readString("aoc2024day07-input.txt")
 		);
+		assertEquals(1708857123053L, actual);
 		System.out.println("Day Seven Puzzle One: " + actual);
 	}
 
@@ -65,6 +66,7 @@ public class Aoc2024Day07 {
 		var actual = daySevenPuzzleTwo(
 				ClassPathFiles.readString("aoc2024day07-input.txt")
 		);
+		assertEquals(189207836795655L, actual);
 		System.out.println("Day Seven Puzzle Two: " + actual);
 	}
 

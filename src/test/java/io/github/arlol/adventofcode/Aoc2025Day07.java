@@ -87,8 +87,20 @@ public class Aoc2025Day07 {
 							}
 							splitCount++;
 						}
+						case "|", "X" -> {
+							// already lit by a neighbouring beam
+						}
+						default -> throw new IllegalStateException(
+								"Unexpected cell: " + cell
+						);
 						}
 					}
+					case ".", "^", "X" -> {
+						// no beam to continue
+					}
+					default -> throw new IllegalStateException(
+							"Unexpected cell: " + previousCell
+					);
 					}
 				}
 			}
