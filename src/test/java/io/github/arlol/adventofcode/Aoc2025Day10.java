@@ -7,7 +7,6 @@ import java.util.Arrays;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -53,7 +52,9 @@ public class Aoc2025Day10 {
 			var start = IntStream.range(0, lightsGoal.size())
 					.mapToObj(_ -> 0)
 					.toList();
-			var allButtonPermutations = getAllButtonPermutations(buttons.size());
+			var allButtonPermutations = getAllButtonPermutations(
+					buttons.size()
+			);
 			var max = Integer.MAX_VALUE;
 			for (var permutationButtons : allButtonPermutations) {
 				var lightPermutation = new ArrayList<>(start);
@@ -138,7 +139,9 @@ public class Aoc2025Day10 {
 			var start = IntStream.range(0, lightsGoal.size())
 					.mapToObj(_ -> 0)
 					.toList();
-			var allButtonPermutations = getAllButtonPermutations(buttons.size());
+			var allButtonPermutations = getAllButtonPermutations(
+					buttons.size()
+			);
 			var max = Integer.MAX_VALUE;
 			for (var permutationButtons : allButtonPermutations) {
 				var lightPermutation = new ArrayList<>(start);
